@@ -4,15 +4,31 @@
     <input type="text" placeholder="breed" ng-model="vm.newPet.breed">
     <input type="text" placeholder="color" ng-model="vm.newPet.color">
     <select ng-model="vm.newPet.checked_in">
-       
+
         <option value="true">yes</option>
-      
+
         <option value="false">no</option>
     </select>
     <input type="submit">
 </form>
 
-<div ng-repeat="pet in vm.pets.list">
-    {{pet.name}}
-</div>
-{{vm.message}}
+<table>
+    <thead>
+        <tr>
+            <th>Owner name</th>
+            <th>Pet name</th>
+            <th>Breed</th>
+            <th>Color</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="pet in vm.pets.list">
+            <td>{{pet.owner}}</td>
+            <td>{{pet.name}}</td>
+            <td>{{pet.breed}}</td>
+            <td>{{pet.color}}</td>
+        </tr>
+    </tbody>
+
+    </div>
+    {{vm.message}}
