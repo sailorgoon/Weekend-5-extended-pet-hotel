@@ -1,3 +1,17 @@
+<form ng-submit="vm.addPet(vm.newPet)">
+    <input type="text" placeholder="owner name" ng-model="vm.newPet.owner">
+    <input type="text" placeholder="pet name" ng-model="vm.newPet.name">
+    <input type="text" placeholder="breed" ng-model="vm.newPet.breed">
+    <input type="text" placeholder="color" ng-model="vm.newPet.color">
+    <!-- <select ng-model="vm.newPet.checked_in">
+       
+        <option value="true">yes</option>
+      
+        <option value="false">no</option>
+    </select> -->
+    <input type="submit">
+</form>
+
 <div ng-repeat="pet in vm.pets.list">
     {{pet.name}}
 </div>

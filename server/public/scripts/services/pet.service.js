@@ -19,6 +19,18 @@ app.service('PetService', ['$http', function($http) {
     }
     self.getAllPets();
 
-    
+    self.addPet = function (petToAdd) {
+        $http({
+            method: 'POST',
+            url: '/pet',
+            data: petToAdd
+        }).then((response) => {
+            alert('Success!');
+            self.getAllPets();
+        }).catch((error) => {
+            console.log('error making owner post request', error);
+            alert('Something went wrong! Check the server.');
+        });
+    }
     
 }]);
