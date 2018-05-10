@@ -13,10 +13,24 @@ app.service('OwnerService', ['$http', function($http) {
             self.owners.list = response.data;
         })
         .catch((error) => {
-            console.log('error making rent get request', error);
+            console.log('error making owner get request', error);
             // alert('Something went wrong! Check the server.');
         });
     }
     self.getAllOwners();
+
+    self.addOwner = function (ownerToAdd) {
+        $http({
+            method: 'POST',
+            url: '/owner',
+            data: ownerToAdd
+        }).then((response) => {
+            alert('Success!');
+            self.getAllOwners();
+        }).catch((error) => {
+            console.log('error making owner post request', error);
+            alert('Something went wrong! Check the server.');
+        });
+    }
     
 }]);

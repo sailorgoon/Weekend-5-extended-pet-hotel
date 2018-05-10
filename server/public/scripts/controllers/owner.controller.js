@@ -5,5 +5,13 @@ app.controller('OwnerController', ['OwnerService', function (OwnerService) {
     self.message = 'Pwn\'d'
     
     self.owners = OwnerService.owners
+
+    self.newOwner = {
+        name: ''
+    }
    
+    self.addOwner = function (owner) {
+        OwnerService.addOwner(owner);
+        self.newOwner = { name: '' };
+    };
 }]);

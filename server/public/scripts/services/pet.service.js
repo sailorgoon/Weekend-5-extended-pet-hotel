@@ -18,5 +18,7 @@ app.service('PetService', ['$http', function($http) {
         });
     }
     self.getAllPets();
+
+    
     
 }]);
