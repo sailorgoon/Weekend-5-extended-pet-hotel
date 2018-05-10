@@ -14,4 +14,19 @@ router.get('/', (req, res) => {
         });
 });
 
+router.post('/', (req, res) => {
+    console.log('POST /pet', req.body);
+    const pet = req.body;
+    const queryText = `INSERT INTO "pets" ("owner", "name", "breed", "color") 
+                       VALUES ($1, $2, $3, $4)`;
+    pool.query(queryText, [pet.owner, pet.name, pet.breed, pet.color])
+        .then(result => {
+            res.sendStatus(201);
+        })
+        .catch(error => {
+            console.log('error making ship insert query', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
