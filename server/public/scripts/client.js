@@ -1,4 +1,4 @@
-var app = angular.module('PetApp', ['ngRoute']);
+const app = angular.module('PetApp', ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     console.log('Route config loaded');

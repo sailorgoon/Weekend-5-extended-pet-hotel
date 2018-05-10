@@ -4,9 +4,7 @@
     <input type="text" placeholder="breed" ng-model="vm.newPet.breed">
     <input type="text" placeholder="color" ng-model="vm.newPet.color">
     <select ng-model="vm.newPet.checked_in">
-
         <option value="true">yes</option>
-
         <option value="false">no</option>
     </select>
     <input type="submit">
@@ -19,6 +17,7 @@
             <th>Pet name</th>
             <th>Breed</th>
             <th>Color</th>
+            <th>Checked in</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +26,9 @@
             <td>{{pet.name}}</td>
             <td>{{pet.breed}}</td>
             <td>{{pet.color}}</td>
+            <td ng-show="!pet.checked_in">{{pet.checked_in}}</td>
+            <td ng-show="pet.checked_in">{{pet.date}}</td>
+            <!-- <td ng-show="pet.checked_in == 'true'">{{pet.date}}</td> -->
         </tr>
     </tbody>
 

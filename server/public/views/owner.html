@@ -4,7 +4,23 @@
     <input type="submit">
 </form>
 
-<div ng-repeat="owner in vm.owners.list">
+<table>
+        <thead>
+            <tr>
+                <th>Owner name</th>
+                <th>Number of pets</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="owner in vm.owners.list">
+                <td>{{owner.name}}</td>
+                <td>#</td>
+                <td><button>delete</button></td>
+            </tr>
+        </tbody>
+
+<div >
     {{owner.name}}
 </div>
 {{vm.message}}
