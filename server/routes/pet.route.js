@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('POST /pet', req.body);
     const pet = req.body;
-    const queryText = `INSERT INTO "pets" ("owner", "name", "breed", "color", "checked_in") 
+    const queryText = `INSERT INTO "pets" ("name", "breed", "color", "checked_in", "owner_id") 
                        VALUES ($1, $2, $3, $4, $5)`;
-    pool.query(queryText, [pet.owner, pet.name, pet.breed, pet.color, pet.checked_in])
+    pool.query(queryText, [pet.name, pet.breed, pet.color, pet.checked_in, pet.owner_id])
         .then(result => {
             res.sendStatus(201);
         })
