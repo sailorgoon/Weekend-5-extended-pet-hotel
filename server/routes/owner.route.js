@@ -3,7 +3,12 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('GET /owner');
-    pool.query(`SELECT * FROM "owners"`)
+    pool.query(`SELECT "owners"."id", "owners"."name", COUNT(*)
+    FROM "pets"
+    FULL JOIN "owners"
+    ON "owners"."id" = "pets"."owner_id"
+    GROUP BY "owners"."id", "owners"."name";`)
+    
         .then(result => {
             // console.log(result);
             res.send(result.rows);

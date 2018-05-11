@@ -12,12 +12,12 @@ app.controller('PetController', ['PetService', 'OwnerService', function (PetServ
         name: '',
         breed: '',
         color: '',
-        owner_id: ''
+        owner_id: 0
         // date: 'current_date'
     }
 
     self.addPet = function (pet) {
         PetService.addPet(pet);
-        self.newPet = { name: '',  breed: '', color: '', owner_id: ''};
+        self.newPet = { name: '',  breed: '', color: '', owner_id: 0};
     };
 }]);

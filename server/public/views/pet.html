@@ -1,5 +1,4 @@
 <form ng-submit="vm.addPet(vm.newPet)">
-    <!-- <input type="text" placeholder="owner name" ng-model="vm.newPet.owner"> -->
     <select ng-model="vm.newPet.owner_id">
         <option ng-repeat="thing in vm.owners.list" ng-value="thing.id">{{thing.name}}</option>
     </select>
@@ -25,14 +24,16 @@
     </thead>
     <tbody>
         <tr ng-repeat="pet in vm.pets.list">
-            <td>{{pet.owner_id}}</td>
+            <td>{{pet.owner_name}}</td>
             <td>{{pet.name}}</td>
             <td>{{pet.breed}}</td>
             <td>{{pet.color}}</td>
             <td ng-show="!pet.checked_in">{{pet.checked_in}}</td>
-            <td ng-show="pet.checked_in">{{pet.date}}</td>
+            <td ng-show="pet.checked_in">{{pet.date|date:mm-dd-yyyy}}</td>
         </tr>
     </tbody>
 
     </div>
     {{vm.message}}
+
+    <pre>{{vm | json}}</pre>

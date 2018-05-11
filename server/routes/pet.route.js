@@ -3,7 +3,24 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('GET /pet');
-    pool.query(`SELECT * FROM "pets"`)
+    pool.query(`SELECT 
+    "p"."id",
+    "p"."name",
+    "p"."breed",
+    "p"."color",
+    "p"."checked_in",
+    "p"."date",
+    "o"."name" as "owner_name"
+FROM "pets" as "p" JOIN "owners" as "o"
+ON "p"."owner_id" = "o"."id";`)
+
+// `SELECT "c"."name" as "crew_name", 
+//  "c"."id" as "crew_id", 
+//  "c"."role",
+//  "s"."name" as "ship_name"
+//  FROM "crew" as "c" JOIN "ships" as "s" 
+//  ON "c"."ship_id" = "s"."id";`
+
         .then(result => {
             // console.log(result);
             res.send(result.rows);
