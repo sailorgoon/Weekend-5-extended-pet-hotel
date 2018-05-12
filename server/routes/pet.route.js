@@ -46,4 +46,18 @@ router.post('/', (req, res) => {
         });
 });
 
+router.delete('/', (req, res) => {
+    const pet = req.query;
+    console.log(req.query);
+    pool.query(`DELETE FROM "pets"
+                 WHERE "id" = $1`, [pet.id])
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error from delete', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

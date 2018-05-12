@@ -20,4 +20,8 @@ app.controller('PetController', ['PetService', 'OwnerService', function (PetServ
         PetService.addPet(pet);
         self.newPet = { name: '',  breed: '', color: '', owner_id: 0};
     };
+
+    self.deletePet = function (pet) {
+        PetService.deletePet(pet);
+    }
 }]);

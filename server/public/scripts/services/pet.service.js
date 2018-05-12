@@ -32,5 +32,28 @@ app.service('PetService', ['$http', function($http) {
             alert('Something went wrong! Check the server.');
         });
     }
+
+    self.deletePet = function (pet) {
+        let confirmStatus = confirm('Are you sure?');
+        if (confirmStatus) {
+            $http({
+                method: 'DELETE',
+                url: '/pet',
+                params: pet
+            })
+                .then(function (response) {
+                    self.getAllPets();
+                    console.log('response from pet delete', response);
+                })
+                .catch(function (error) {
+                    console.log('error on pet DELETE', error);
+                });
+        }
+        else {
+            console.log('delete cancelled');
+        }
+        
+    }
+    
     
 }]);
