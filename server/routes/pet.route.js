@@ -3,7 +3,24 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('GET /pet');
-    pool.query(`SELECT * FROM "pets"`)
+    pool.query(`SELECT 
+    "p"."id",
+    "p"."name",
+    "p"."breed",
+    "p"."color",
+    "p"."checked_in",
+    "p"."date",
+    "o"."name" as "owner_name"
+FROM "pets" as "p" JOIN "owners" as "o"
+ON "p"."owner_id" = "o"."id";`)
+
+// `SELECT "c"."name" as "crew_name", 
+//  "c"."id" as "crew_id", 
+//  "c"."role",
+//  "s"."name" as "ship_name"
+//  FROM "crew" as "c" JOIN "ships" as "s" 
+//  ON "c"."ship_id" = "s"."id";`
+
         .then(result => {
             // console.log(result);
             res.send(result.rows);
@@ -17,9 +34,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('POST /pet', req.body);
     const pet = req.body;
-    const queryText = `INSERT INTO "pets" ("owner", "name", "breed", "color", "checked_in") 
+    const queryText = `INSERT INTO "pets" ("name", "breed", "color", "checked_in", "owner_id") 
                        VALUES ($1, $2, $3, $4, $5)`;
-    pool.query(queryText, [pet.owner, pet.name, pet.breed, pet.color, pet.checked_in])
+    pool.query(queryText, [pet.name, pet.breed, pet.color, pet.checked_in, pet.owner_id])
         .then(result => {
             res.sendStatus(201);
         })
