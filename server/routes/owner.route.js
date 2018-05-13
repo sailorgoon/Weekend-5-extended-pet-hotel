@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
     ON "owners"."id" = "pets"."owner_id"
     GROUP BY "owners"."id", "owners"."name"
     ORDER BY "owners"."name";`)
-    
         .then(result => {
             // console.log(result);
             res.send(result.rows);
@@ -49,5 +48,7 @@ router.delete('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+
 
 module.exports = router;

@@ -27,4 +27,8 @@ app.controller('PetController', ['PetService', 'OwnerService', function (PetServ
     self.deletePet = function (pet) {
         PetService.deletePet(pet);
     }
+
+    self.updatePet = function (pet) {
+        PetService.updatePet(pet);
+    }
 }]);

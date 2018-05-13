@@ -1,10 +1,16 @@
 <form ng-submit="vm.addPet(vm.newPet)">
+    Add a new pet here!<br>
+    Owner name<br>
     <select ng-model="vm.newPet.owner_id">
         <option ng-repeat="thing in vm.owners.list" ng-value="thing.id">{{thing.name}}</option>
     </select>
-    <input type="text" placeholder="pet name" ng-model="vm.newPet.name">
+    <br>
+    Tell us about your pet<br>
+    <input type="text" placeholder="name" ng-model="vm.newPet.name">
     <input type="text" placeholder="breed" ng-model="vm.newPet.breed">
     <input type="text" placeholder="color" ng-model="vm.newPet.color">
+    <br>
+    Would you like to check your pet in now?<br>
     <select ng-model="vm.newPet.checked_in">
         <option value="true">yes</option>
         <option value="false">no</option>
@@ -20,7 +26,9 @@
             <th>Breed</th>
             <th>Color</th>
             <th>Checked in</th>
-            <th>Delete</th>
+            <th>delete</th>
+            <th>check in</th>
+            <th>check out</th>
         </tr>
     </thead>
     <tbody>
@@ -29,13 +37,20 @@
             <td>{{pet.name}}</td>
             <td>{{pet.breed}}</td>
             <td>{{pet.color}}</td>
-            <td ng-show="!pet.checked_in">{{pet.checked_in}}</td>
+            <td ng-show="!pet.checked_in">no</td>
             <td ng-show="pet.checked_in">{{pet.date|date:mm-dd-yyyy}}</td>
-            <td><button ng-click="vm.deletePet(pet)">Delete</button></td>
+            <td>
+                <button ng-click="vm.deletePet(pet)">Delete</button>
+            </td>
+            <td>
+                <input ng-hide="pet.checked_in" ng-model="pet.checked_in" type="radio" value="true" ng-click="vm.updatePet(pet)">
+            </td>
+            <td>
+                <input ng-hide="!pet.checked_in" ng-model="pet.checked_in" type="radio" value="false" ng-click="vm.updatePet(pet)">
+            </td>
         </tr>
     </tbody>
 
     </div>
-    {{vm.message}}
 
-    <pre>{{vm | json}}</pre>
+    <!-- <pre>{{vm | json}}</pre> -->
