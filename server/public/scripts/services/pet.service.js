@@ -55,5 +55,20 @@ app.service('PetService', ['$http', function($http) {
         
     }
     
+    self.updatePet = function (pet) { //put pet back in parens
+        console.log('update enabled')
+        $http({
+            method: 'PUT',
+            url: '/pet',
+            data: pet
+        })
+        .then(function(response){
+            self.getAllPets();
+            console.log('response from update', response);
+        })
+        .catch(function (error){
+            console.log('error on update', error);
+        })
+    }
     
 }]);

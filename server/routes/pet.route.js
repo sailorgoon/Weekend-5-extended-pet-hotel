@@ -14,14 +14,6 @@ router.get('/', (req, res) => {
 FROM "pets" as "p" JOIN "owners" as "o"
 ON "p"."owner_id" = "o"."id"
 ORDER BY "o"."name";`)
-
-// `SELECT "c"."name" as "crew_name", 
-//  "c"."id" as "crew_id", 
-//  "c"."role",
-//  "s"."name" as "ship_name"
-//  FROM "crew" as "c" JOIN "ships" as "s" 
-//  ON "c"."ship_id" = "s"."id";`
-
         .then(result => {
             // console.log(result);
             res.send(result.rows);
@@ -59,6 +51,21 @@ router.delete('/', (req, res) => {
             console.log('error from delete', error);
             res.sendStatus(500);
         });
+});
+
+router.put('/', (req, res) => {
+    const pet = req.body;
+    console.log(pet);
+    pool.query(`UPDATE "pets"
+            SET "checked_in" = $1, "date" = current_date
+            WHERE "id" = $2`, [pet.checked_in, pet.id])
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error from update', error);
+            res.sendStatus(500);
+        })
 });
 
 module.exports = router;
