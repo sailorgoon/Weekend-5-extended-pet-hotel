@@ -1,4 +1,4 @@
-app.controller('OwnerController', ['OwnerService', function (OwnerService) {
+app.controller('OwnerController', ['OwnerService', 'PetService', function (OwnerService,PetService) {
     console.log('OwnerController has been loaded');
     const self = this;
 
@@ -14,4 +14,9 @@ app.controller('OwnerController', ['OwnerService', function (OwnerService) {
         OwnerService.addOwner(owner);
         self.newOwner = { name: '' };
     };
+
+    self.deleteOwner = function (owner) {
+        OwnerService.deleteOwner(owner);
+    }
+
 }]);

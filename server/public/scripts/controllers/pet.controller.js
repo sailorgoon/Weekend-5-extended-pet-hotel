@@ -8,6 +8,8 @@ app.controller('PetController', ['PetService', 'OwnerService', function (PetServ
 
     self.owners = OwnerService.owners;
 
+    self.getAllOwners = OwnerService.getAllOwners;
+
     self.newPet = {
         name: '',
         breed: '',
@@ -19,6 +21,7 @@ app.controller('PetController', ['PetService', 'OwnerService', function (PetServ
     self.addPet = function (pet) {
         PetService.addPet(pet);
         self.newPet = { name: '',  breed: '', color: '', owner_id: 0};
+        self.getAllOwners();
     };
 
     self.deletePet = function (pet) {

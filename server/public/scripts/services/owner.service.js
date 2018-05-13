@@ -32,5 +32,28 @@ app.service('OwnerService', ['$http', function($http) {
             alert('Something went wrong! Check the server.');
         });
     }
+
+    self.deleteOwner = function (owner) {
+        let confirmStatus = confirm('Are you sure?');
+        if (confirmStatus) {
+            $http({
+                method: 'DELETE',
+                url: '/owner',
+                params: owner
+            })
+                .then(function (response) {
+                    self.getAllOwners();
+                    console.log('response from owner delete', response);
+                })
+                .catch(function (error) {
+                    alert('Cannot delete an owner with pets in the system. Please delete pets first.')
+                    console.log('error on owner DELETE', error);
+                });
+        }
+        else {
+            console.log('delete cancelled');
+        }
+        
+    }
     
 }]);

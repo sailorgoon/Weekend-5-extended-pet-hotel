@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
     "p"."date",
     "o"."name" as "owner_name"
 FROM "pets" as "p" JOIN "owners" as "o"
-ON "p"."owner_id" = "o"."id";`)
+ON "p"."owner_id" = "o"."id"
+ORDER BY "o"."name";`)
 
 // `SELECT "c"."name" as "crew_name", 
 //  "c"."id" as "crew_id", 

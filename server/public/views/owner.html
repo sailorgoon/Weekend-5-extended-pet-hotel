@@ -15,12 +15,10 @@
         <tbody>
             <tr ng-repeat="owner in vm.owners.list">
                 <td>{{owner.name}}</td>
-                <td>{{owner.count}}</td>
-                <td><button>delete</button></td>
+                <td>{{owner.sum}}</td>
+                <td><button ng-click="vm.deleteOwner(owner)">delete</button></td>
             </tr>
         </tbody>
 
-<div >
-    {{owner.name}}
-</div>
+
 {{vm.message}}
