@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
     "p"."date",
     "o"."name" as "owner_name"
 FROM "pets" as "p" JOIN "owners" as "o"
-ON "p"."owner_id" = "o"."id";`)
+ON "p"."owner_id" = "o"."id"
+ORDER BY "o"."name";`)
 
 // `SELECT "c"."name" as "crew_name", 
 //  "c"."id" as "crew_id", 
@@ -42,6 +43,20 @@ router.post('/', (req, res) => {
         })
         .catch(error => {
             console.log('error making pet insert query', error);
+            res.sendStatus(500);
+        });
+});
+
+router.delete('/', (req, res) => {
+    const pet = req.query;
+    console.log(req.query);
+    pool.query(`DELETE FROM "pets"
+                 WHERE "id" = $1`, [pet.id])
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error from delete', error);
             res.sendStatus(500);
         });
 });

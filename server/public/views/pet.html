@@ -20,6 +20,7 @@
             <th>Breed</th>
             <th>Color</th>
             <th>Checked in</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
             <td>{{pet.color}}</td>
             <td ng-show="!pet.checked_in">{{pet.checked_in}}</td>
             <td ng-show="pet.checked_in">{{pet.date|date:mm-dd-yyyy}}</td>
+            <td><button ng-click="vm.deletePet(pet)">Delete</button></td>
         </tr>
     </tbody>
 
