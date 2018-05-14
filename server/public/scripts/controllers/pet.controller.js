@@ -2,8 +2,6 @@ app.controller('PetController', ['PetService', 'OwnerService', function (PetServ
     console.log('PetController has been loaded');
     const self = this;
 
-    self.message = 'PetsPetsPets';
-
     self.pets = PetService.pets;
 
     self.owners = OwnerService.owners;
