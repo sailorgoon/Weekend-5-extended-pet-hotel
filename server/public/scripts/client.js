@@ -1,11 +1,12 @@
-const app = angular.module('PetApp', ['ngRoute']);
+const app = angular.module('PetApp', ['ngRoute', 'ngMaterial']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     console.log('Route config loaded');
 
     $routeProvider
         .when('/', {
-            redirectTo: '/pet'
+            templateUrl: '/views/home.html',
+            controller: 'HomeController as vm'
         })
         .when('/pet', {
             templateUrl: 'views/pet.html',

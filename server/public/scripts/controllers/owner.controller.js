@@ -1,8 +1,6 @@
 app.controller('OwnerController', ['OwnerService', 'PetService', function (OwnerService,PetService) {
     console.log('OwnerController has been loaded');
     const self = this;
-
-    self.message = 'Pwn\'d'
     
     self.owners = OwnerService.owners
 

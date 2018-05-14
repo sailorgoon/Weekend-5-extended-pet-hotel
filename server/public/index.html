@@ -1,29 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.js"></script>
     <script src="vendors/angular-route.js"></script>
+    <script src="vendors/angular-material.min.js"></script>
+    <script src="vendors/angular-animate.min.js"></script>
+    <script src="vendors/angular-aria.min.js"></script>
+    <script src="vendors/angular-messages.min.js"></script>
+    <link rel="stylesheet" href="vendors/angular-material.min.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/pet.controller.js"></script>
     <script src="scripts/services/pet.service.js"></script>
     <script src="scripts/controllers/owner.controller.js"></script>
     <script src="scripts/services/owner.service.js"></script>
-    <link rel="stylesheet" href="vendors/angular-material.min.css">
-    <script src="vendors/angular-animate.min.js"></script>
-    <script src="vendors/angular-aria.min.js"></script>
-    <script src="vendors/angular-messages.min.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/controllers/home.controller.js"></script>
     <title>Pet Hotel</title>
 </head>
-<body ng-app="PetApp">
-    <h1>pet hotel</h1>
-    <a ng-href="#!/pet">add and view pets</a>
-    <a ng-href="#!/owner">add and view owners</a>
-    <hr>
-    <ng-view></ng-view>
+
+<body ng-app="PetApp" layout="column">
+    <md-toolbar id="toolbar">
+        <h1>pet hotel</h1>
+    </md-toolbar>
+    <div class="container" layout="row" flex>
+        <md-sidenav id="sidenav" md-is-locked-open="true" class="md-whiteframe-4dp">
+            <md-list>
+                <md-list-item>
+                    <md-button>
+                        <a ng-href="#!/pet">add and view pets</a>
+                    </md-button>
+                </md-list-item>
+                <md-list-item>
+                    <md-button>
+                        <a ng-href="#!/owner">add and view owners</a>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </md-sidenav>
+        <mdcontent id="content" flex>
+            <ng-view></ng-view>
+        </mdcontent>
+    </div>
 
 </body>
+
 </html>

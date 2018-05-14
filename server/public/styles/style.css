@@ -1,6 +1,18 @@
-body {
+/* body {
     background-color: rgb(175, 175, 95)
-}
+} */
 table, th, tr, td {
     border: 1px solid black;
+}
+
+#content {
+    padding: 40px;
+}
+
+#toolbar {
+    padding-left: 40px;
+}
+
+#sidenav {
+    padding: 40px;
 }
